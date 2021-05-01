@@ -1,10 +1,7 @@
 package org.medmota.ipldasbord.data;
 
-import javax.persistence.Entity;
-
-@Entity
 public class MatchInput {
-
+	
 	private String id;
 	private String city;
 	private String date;
@@ -125,6 +122,4 @@ public class MatchInput {
 		this.umpire2 = umpire2;
 	}
 	
-	
-
 }

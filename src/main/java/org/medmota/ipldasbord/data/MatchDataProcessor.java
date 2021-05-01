@@ -11,7 +11,7 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match>{
 	 private static final Logger log = LoggerFactory.getLogger(MatchDataProcessor.class);
 
 	@Override
-	public Match process(MatchInput matchInput) throws Exception {
+	public Match process(final MatchInput matchInput) throws Exception {
 		final Match transformedMatch = new Match();
 		
 		transformedMatch.setId(Long.parseLong(matchInput.getId()));
@@ -31,13 +31,13 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match>{
 			firstInningsTeam = matchInput.getToss_winner().equals(matchInput.getTeam1()) ? matchInput.getTeam1() : matchInput.getTeam2();
 		}
 		
-		
 		transformedMatch.setTeam1(firstInningsTeam);
 		transformedMatch.setTeam2(secondInningsTeam);
 		
 		transformedMatch.setTossWinner(matchInput.getToss_winner());
 		transformedMatch.setTossDecision(matchInput.getToss_decision());
 		transformedMatch.setResult(matchInput.getResult());
+		transformedMatch.setMatchWinner(matchInput.getWinner());
 		transformedMatch.setResultMargin(matchInput.getResult_margin());
 		transformedMatch.setUmpire1(matchInput.getUmpire1());
 		transformedMatch.setUmpire2(matchInput.getUmpire2());
@@ -46,7 +46,4 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match>{
 		return transformedMatch;
 	}
 	 
-	 
-
-
 }
